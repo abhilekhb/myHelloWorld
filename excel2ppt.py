@@ -112,9 +112,13 @@ pic.rotation = -45.0 # display the picture rotated by -45 (360-45=315) degrees
 #if shape2.has_text_frame:
 #    print('shape2 has a text frame!')
 title = slide.shapes.title
-title.text = "Service Ops Dashboards"
+now = datetime.now()
+mthYear = now.strftime('%B %Y')
+title.text = "Service Ops Dashboards - " + mthYear
 para1 = title.text_frame.paragraphs[0]
 para1.font.name = 'Calibri'
+para1.font.size = Pt(28)
+para1.font.bold = True
 para1.font.color.rgb = RGBColor(255, 100, 0) # print in Orange color 
 #title.line.color.rgb = RGBColor(0x00, 0x16, 0xBC)
 
@@ -166,7 +170,7 @@ for r, d, f in os.walk(srcDir):
                     title.text_frame.auto_size = MSO_AUTO_SIZE.SHAPE_TO_FIT_TEXT
                     title.text_frame.word_wrap = False 
                     title.line.color.rgb = RGBColor(0x00, 0x16, 0xBC)
-                    title.text = xls.sheet_names[0] + " Services Dashboard"
+                    title.text = xls.sheet_names[0] + " Services Dashboard - " + mthYear
                     subtitle = slide.placeholders[11]
                     subtitle.text = "Auto-Generated on {:%d %B-%Y, %I:%M:%S %p}".format(datetime.now())
                     para2 = subtitle.text_frame.paragraphs[0]
@@ -214,7 +218,7 @@ for r, d, f in os.walk(srcDir):
                         title = slide.shapes.title
                         subtitle = slide.placeholders[11]
                         #txt_content = slide.placeholders[10]
-                        title.text = xls.sheet_names[0] + ' Services Dashboard [' + str(times) + ']'
+                        title.text = xls.sheet_names[0] + ' Dashboard  - ' + mthYear + ' [' + str(times) + ']'
                         subtitle.text = "Auto-Generated on {:%d %B-%Y, %I:%M:%S %p}".format(datetime.now())
                         para2 = subtitle.text_frame.paragraphs[0]
                         para2.font.size = Pt(12)
