@@ -216,6 +216,10 @@ for r, d, f in os.walk(srcDir):
                         #txt_content = slide.placeholders[10]
                         title.text = xls.sheet_names[0] + ' Services Dashboard [' + str(times) + ']'
                         subtitle.text = "Auto-Generated on {:%d %B-%Y, %I:%M:%S %p}".format(datetime.now())
+                        para2 = subtitle.text_frame.paragraphs[0]
+                        para2.font.size = Pt(12)
+                        para2.font.italic = True
+                        para2.font.color.rgb = RGBColor(255, 0, 0) # print in red color 
                         #txt_content.text = df1.to_string(columns=[0:1],na_rep="Empty")
                         #txt_content.text = df1[i:j].to_string(na_rep="Empty")
                         top = Inches(1.5)
